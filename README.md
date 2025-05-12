@@ -1,24 +1,57 @@
-# README
+# フィボナッチ数を返すAPI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このrailsアプリケーションは、指定した整数に対するフィボナッチ数を返すシンプルなAPIです。
 
-Things you may want to cover:
 
-* Ruby version
+## ファイル構成と主な役割
 
-* System dependencies
+'app/controllers/fib_controller.erb' | APIのロジックの記述
+'config/routes.rb' | URLルーティングの設定
+'test/controllers/fib_controller_test.erb' | テストの記述
 
-* Configuration
 
-* Database creation
+## ソースコードの概要
+'app/controllers/fib_controller.erb'
 
-* Database initialization
+### 任意の項のフィボナッチ数を求めるメソッド
+  def fib_sequence(n)
+    if n <= 0 || n.is_a?(String)  ・・・渡された値（n）が定義外の数（文字列）の場合 "エラー" を返す
+      return "エラー"
 
-* How to run the test suite
+    elsif n <= 2  ・・・フィボナッチ数列の第一項、第二項が指定された場合、1を返す
+      return 1
 
-* Services (job queues, cache servers, search engines, etc.)
+    else
+      result = 0
+      fib_0 = 1
+      fib_1 = 1
 
-* Deployment instructions
+      (3..n).each do  ・・・任意の値（項数）まで計算のループを行う
+        result = fib_0 + fib_1
+        fib_0 = fib_1
+        fib_1 = result
+      end
+      
+      return result ・・・ループが終了した際の 変数resultが求めたい項の値
 
-* ...
+    end
+  end
+end
+
+### showアクション
+
+  def show
+    n = params[:id].to_i  ・・・URLから数値を取得
+    result = fib_sequence(n)  ・・・その数値を引数に作成したメソッドを呼び出す
+
+    if result.is_a?(Integer)
+      render json: { result: result}  ・・・メソッドの返り値が整数の場合その値を出力
+    else
+      render json: { ststus: 400, message: "Bad request"}, status: 400  ・・・数値ではない（"エラー"）の場合エラーメッセージを出力
+    end
+  end
+
+## テスト
+
+以下のコマンドでテストを実行できます
+rails test
