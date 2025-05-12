@@ -13,7 +13,7 @@ class FibController < ApplicationController
 
   private
   def fib_sequence(n)
-    if n <= 0 || n.is_a?(String)
+    if n <= 0
       return "エラー"
 
     elsif n <= 2
