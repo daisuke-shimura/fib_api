@@ -1,7 +1,8 @@
+require "logger"
+
 require_relative "boot"
 
 require "rails"
-require "logger"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
