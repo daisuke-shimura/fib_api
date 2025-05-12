@@ -20,7 +20,7 @@ https://fib-api-89oe.onrender.com/fib/:n
 
 ### 任意の項のフィボナッチ数を求めるメソッド
 
-'''
+```
   def fib_sequence(n)
     if n <= 0  #渡された値（n）が定義外の数（文字列）の場合 "エラー" を返す
       return "エラー"
@@ -43,12 +43,11 @@ https://fib-api-89oe.onrender.com/fib/:n
 
     end
   end
-end
-'''
+```
 
 ### showアクション
 
-'''
+```
   def show
     n = params[:id].to_i  #URLから数値を取得
     result = fib_sequence(n)  #取得した数値を引数にして、フィボナッチ数を求めるメソッドを呼び出します
@@ -59,11 +58,11 @@ end
       render json: { status: 400, message: "Bad request"}, status: 400  #数値ではない（"エラー"）の場合エラーメッセージを出力
     end
   end
-'''
+```
 
 
 ## テスト
 
 以下のコマンドでテストを実行できます
 
-'rails test'
+`rails test`
