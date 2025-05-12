@@ -22,7 +22,7 @@ https://fib-api-89oe.onrender.com/fib/:n
 
 ```
   def fib_sequence(n)
-    if n <= 0  #渡された値（n）が定義外の数（文字列）の場合 "エラー" を返す
+    if n <= 0  #渡された値（n）が定義外の数（負の数や文字列）の場合 "エラー" を返す
       return "エラー"
 
     elsif n <= 2  #フィボナッチ数列の第一項、第二項が指定された場合、1を返す
