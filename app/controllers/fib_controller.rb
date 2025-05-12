@@ -6,7 +6,7 @@ class FibController < ApplicationController
     if result.is_a?(Integer)
       render json: { result: result}
     else
-      render json: { ststus: 400, message: "Bad request"}, status: 400
+      render json: { status: 400, message: "Bad request"}, status: 400
     end
   end
 

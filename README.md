@@ -3,6 +3,11 @@
 このrailsアプリケーションは、指定した整数に対するフィボナッチ数を返すシンプルなAPIです。
 
 
+## URL
+https://fib-api-89oe.onrender.com/fib/:n
+※:nに任意の数値を入力してください
+
+
 ## ファイル構成と主な役割
 
 'app/controllers/fib_controller.erb' | APIのロジックの記述
@@ -11,7 +16,7 @@
 
 
 ## ソースコードの概要
-'app/controllers/fib_controller.erb'
+'app/controllers/fib_controller.erb'ファイルの記載
 
 ### 任意の項のフィボナッチ数を求めるメソッド
   def fib_sequence(n)
@@ -50,6 +55,7 @@ end
       render json: { ststus: 400, message: "Bad request"}, status: 400  ・・・数値ではない（"エラー"）の場合エラーメッセージを出力
     end
   end
+
 
 ## テスト
 
